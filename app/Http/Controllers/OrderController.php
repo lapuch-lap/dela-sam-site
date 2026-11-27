@@ -35,4 +35,14 @@ class OrderController extends Controller
 
         return redirect()->route('profile.edit')->with('success', 'Заказ успешно оформлен!');
     }
+        public function destroy(Order $order)
+    {
+        // Проверяем, что пользователь удаляет именно свой заказ
+        if ($order->user_id !== Auth::id()) {
+            abort(403);
+        }
+        
+        $order->delete();
+        return back()->with('success', 'Заказ отменен и удален.');
+    }
 }

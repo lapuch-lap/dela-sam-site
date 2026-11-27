@@ -26,6 +26,7 @@
                 <div class="bg-neutral-900 border border-neutral-800 rounded-lg p-6 hover:border-yellow-500 transition shadow-lg">
                     <h4 class="text-xl font-bold text-yellow-500 mb-4">Страница "О компании"</h4>
                     <p class="text-gray-400 mb-6 text-sm">Редактирование текста, который видят пользователи.</p>
+                    <!-- Вот эта ссылка должна быть правильной -->
                     <a href="{{ route('admin.about.edit') }}" class="inline-block px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-400 transition">
                         Редактировать
                     </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tool;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class ToolController extends Controller
@@ -10,7 +11,8 @@ class ToolController extends Controller
     public function index()
     {
         $tools = Tool::all();
-        return view('admin.tools.index', compact('tools'));
+        $orders = Order::all();
+        return view('admin.tools.index', compact('tools', 'orders'));
     }
 
     public function create()

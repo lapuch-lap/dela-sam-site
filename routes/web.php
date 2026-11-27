@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
 
+
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/about', [PageController::class, 'editAbout'])->name('admin.about.edit');
-    Route::post('/admin/about', [PageController::class, 'updateAbout'])->name('admin.about.update');
+Route::get('/admin/about', [PageController::class, 'editAbout'])->name('admin.about.edit');
+Route::post('/admin/about', [PageController::class, 'updateAbout'])->name('admin.about.update');
 });
 
 Route::get('/', function () {
@@ -47,6 +48,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Управление заказами (используем index, а не dexing)
     Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
     Route::patch('/admin/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+    Route::delete('/admin/orders/{order}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
+    Route::delete('/order/{order}', [\App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');
 });
 
 require __DIR__.'/auth.php';

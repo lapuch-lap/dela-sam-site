@@ -24,9 +24,6 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     @foreach($tools as $tool)
                         <div class="bg-neutral-900 border border-neutral-800 rounded-lg overflow-hidden hover:border-yellow-500 transition duration-300 flex flex-col">
-                            <div class="h-48 bg-black flex items-center justify-center text-gray-500">
-                                <span class="text-5xl">🛠️</span>
-                            </div>
                             
                             <form method="POST" action="{{ route('orders.store', $tool) }}" class="p-6 flex-grow flex flex-col justify-between">
                                 @csrf

@@ -26,4 +26,9 @@ class AdminOrderController extends Controller
         
         return back()->with('success', 'Статус заказа №' . $order->id . ' успешно изменен!');
     }
+        public function destroy(Order $order)
+    {
+        $order->delete();
+        return back()->with('success', 'Заказ успешно удален!');
+    }
 }

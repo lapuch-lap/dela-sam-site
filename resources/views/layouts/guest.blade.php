@@ -7,17 +7,15 @@
 
         <title>{{ config('app.name', 'Делай Сам') }}</title>
 
-        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,900&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased bg-black">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-black">
             
-            <!-- Логотип на странице входа -->
+            <!-- Логотип -->
             <div>
                 <a href="/" class="flex flex-col items-center gap-4">
                     <img src="{{ asset('images/logo.png') }}" alt="Делай Сам" class="h-20 w-auto">
@@ -28,11 +26,11 @@
             </div>
 
             <!-- Форма (вход/регистрация) -->
-            <div class="w-full sm:max-w-md mt-8 px-6 py-8 bg-gray-900 shadow-2xl overflow-hidden sm:rounded-lg border border-yellow-500">
+            <div class="w-full sm:max-w-md mt-8 px-6 py-8 bg-neutral-900 shadow-2xl overflow-hidden sm:rounded-lg border border-yellow-500">
                 {{ $slot }}
             </div>
             
-            <div class="mt-8 text-gray-500 text-sm">
+            <div class="mt-8 text-neutral-500 text-sm">
                 &copy; {{ date('Y') }} Делай Сам
             </div>
         </div>
