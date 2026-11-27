@@ -5,8 +5,12 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="text-2xl font-black text-yellow-500 tracking-wider hover:text-yellow-400 transition">
-                        ДЕЛАЙ САМ
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
+                        <!-- Место под ваш логотип -->
+                        <img src="{{ asset('images/logo.png') }}" alt="Делай Сам" class="h-10 w-auto">
+                        <span class="text-2xl font-black text-yellow-500 tracking-wider hover:text-yellow-400 transition hidden sm:block">
+                            ДЕЛАЙ САМ
+                        </span>
                     </a>
                 </div>
 
@@ -14,6 +18,10 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white hover:text-yellow-500">
                         {{ __('Каталог') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-white hover:text-yellow-500">
+                        {{ __('О компании') }}
                     </x-nav-link>
                     
                     <!-- Ссылка только для админа -->
@@ -48,10 +56,7 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Выйти') }}
                             </x-dropdown-link>
                         </form>
@@ -78,6 +83,10 @@
                 {{ __('Каталог') }}
             </x-responsive-nav-link>
             
+            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-white hover:text-yellow-500">
+                {{ __('О компании') }}
+            </x-responsive-nav-link>
+            
             @if(Auth::user()->is_admin)
                 <x-responsive-nav-link :href="route('admin.panel')" :active="request()->routeIs('admin.panel')" class="text-yellow-500 font-bold">
                     {{ __('Админ-панель') }}
@@ -100,11 +109,7 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();"
-                            class="text-white hover:text-yellow-500">
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="text-white hover:text-yellow-500">
                         {{ __('Выйти') }}
                     </x-responsive-nav-link>
                 </form>

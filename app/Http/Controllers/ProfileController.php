@@ -27,8 +27,8 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
-
-        // Добавляем сохранение телефона и адреса
+        
+        // Явно сохраняем новые поля
         $request->user()->phone = $request->phone;
         $request->user()->address = $request->address;
 

@@ -7,18 +7,23 @@ use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
 {
-    // Переименовали метод
-    public function dexing()
+    // Возвращаем стандартное имя метода index
+    public function index()
     {
         $orders = Order::with(['user', 'tool'])->latest()->get();
-        // Указываем новое имя файла
-        return view('admin.orders.dexing', compact('orders'));
+        // Указываем стандартное имя файла
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function updateStatus(Request $request, Order $order)
     {
-        $request->validate(['status' => 'required|string']);
+        // Разрешаем все статусы, которые есть в вашем выпадающем списке
+        $request->validate([
+            'status' => 'required|in:Подготавливается,В ожидании,Доставляется,Доставлен,Получен'
+        ]);
+        
         $order->update(['status' => $request->status]);
-        return back()->with('success', 'Статус заказа обновлен!');
+        
+        return back()->with('success', 'Статус заказа №' . $order->id . ' успешно изменен!');
     }
 }
